@@ -5,3 +5,7 @@ type UserDTO struct {
 	Address  string `json:"address"`
 	Email    string `json:"email"`
 }
+
+type UserUpdateDTO struct {
+	Email string `json:"email"`
+}

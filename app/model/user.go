@@ -16,3 +16,7 @@ type User struct {
 func CreateUser(user interface{}) {
 	config.DB.Create(user)
 }
+
+func UpdateUserById(id interface{}, data interface{}) {
+	config.DB.Model(&User{}).Where("id = ?", id).Updates(data)
+}
