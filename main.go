@@ -10,7 +10,7 @@ import (
 
 func main() {
 	config.Connect()
-	config.Migrate(&model.User{})
+	config.Migrate(&model.User{}, &model.Works{})
 	config.RedisClient()
 
 	app := fiber.New()
