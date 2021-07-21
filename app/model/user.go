@@ -20,3 +20,7 @@ func CreateUser(user interface{}) {
 func UpdateUserById(id interface{}, data interface{}) {
 	config.DB.Model(&User{}).Where("id = ?", id).Updates(data)
 }
+
+func GetUserList(resp interface{}) *gorm.DB {
+	return config.DB.Model(&User{}).Find(resp)
+}

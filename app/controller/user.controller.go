@@ -38,3 +38,13 @@ func UpdateEmailUser(c *fiber.Ctx) error {
 
 	return c.JSON(user)
 }
+
+func GetUser(c *fiber.Ctx) error {
+	var user []types.UserListDB
+	model.GetUserList(&user)
+
+	return c.JSON(types.UserListResp{
+		Status: true,
+		Data:   user,
+	})
+}

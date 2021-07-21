@@ -9,7 +9,7 @@ import (
 func UserRouter(app fiber.Router) {
 	r := app.Group("/user")
 
+	r.Get("/", controller.GetUser)
 	r.Post("/", controller.CreateUser)
 	r.Put("/:id", controller.UpdateEmailUser)
-
 }
