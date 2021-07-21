@@ -11,6 +11,7 @@ import (
 func main() {
 	config.Connect()
 	config.Migrate(&model.User{})
+	config.RedisClient()
 
 	app := fiber.New()
 
