@@ -24,3 +24,7 @@ func UpdateUserById(id interface{}, data interface{}) {
 func GetUserList(resp interface{}) *gorm.DB {
 	return config.DB.Model(&User{}).Find(resp)
 }
+
+func DeleteUser(Condition interface{}) *gorm.DB {
+	return config.DB.Where(Condition).Delete(&User{})
+}

@@ -48,3 +48,11 @@ func GetUser(c *fiber.Ctx) error {
 		Data:   user,
 	})
 }
+
+func DeleteUserById(c *fiber.Ctx) error {
+	id := c.Params("id")
+
+	model.DeleteUser("id = " + id)
+
+	return c.SendStatus(200)
+}

@@ -12,4 +12,5 @@ func UserRouter(app fiber.Router) {
 	r.Get("/", controller.GetUser)
 	r.Post("/", controller.CreateUser)
 	r.Put("/:id", controller.UpdateEmailUser)
+	r.Delete("/:id", controller.DeleteUserById)
 }
