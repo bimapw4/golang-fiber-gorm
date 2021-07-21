@@ -1,9 +1,7 @@
 package types
 
-import "time"
-
 type UserDTO struct {
-	Username string    `json:"username"`
-	Address  string    `json:"address"`
-	TTL      time.Time `json:"ttl"`
+	Username string `json:"username"`
+	Address  string `json:"address"`
+	Email    string `json:"email"`
 }

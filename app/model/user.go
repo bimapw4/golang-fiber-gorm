@@ -2,16 +2,15 @@ package model
 
 import (
 	"golang-fiber-gorm/config"
-	"time"
 
 	"gorm.io/gorm"
 )
 
 type User struct {
 	gorm.Model
-	Username string    `json:"username"`
-	Address  string    `json:"address"`
-	TTL      time.Time `json:"ttl"`
+	Username string `json:"username"`
+	Address  string `json:"address"`
+	Email    string `json:"email"`
 }
 
 func CreateUser(user interface{}) {
