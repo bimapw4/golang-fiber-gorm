@@ -23,7 +23,7 @@ func CreateUser(c *fiber.Ctx) error {
 		Username: user.Username,
 		Address:  user.Address,
 		Email:    user.Email,
-		Work_id:  user.Works_id,
+		Work_id:  user.Work_id,
 	})
 
 	config.Client.Del(context.Background(), "GetUser")

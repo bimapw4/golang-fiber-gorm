@@ -4,7 +4,7 @@ type UserDTO struct {
 	Username string `json:"username"`
 	Address  string `json:"address"`
 	Email    string `json:"email"`
-	Works_id int    `json:"work_id"`
+	Work_id  int    `json:"work_id"`
 }
 
 type UserUpdateDTO struct {
@@ -16,6 +16,7 @@ type UserListDB struct {
 	Username string `json:"username"`
 	Address  string `json:"address"`
 	Email    string `json:"email"`
+	Work_id  int    `json:"work_id"`
 }
 
 type UserListResp struct {

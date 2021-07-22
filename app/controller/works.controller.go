@@ -40,7 +40,7 @@ func UpdateWorks(c *fiber.Ctx) error {
 
 func GetWorks(c *fiber.Ctx) error {
 	var works []types.WorksListDB
-	model.GetUserList(&works)
+	model.GetWorksList(&works)
 
 	return c.JSON(types.WorksListResp{
 		Status: true,
