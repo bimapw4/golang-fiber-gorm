@@ -11,6 +11,7 @@ type User struct {
 	Username string `json:"username"`
 	Address  string `json:"address"`
 	Email    string `json:"email"`
+	Work_id  int    `json:"work_id"`
 }
 
 func CreateUser(user interface{}) {
