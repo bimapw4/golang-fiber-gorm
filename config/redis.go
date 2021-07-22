@@ -6,6 +6,8 @@ import (
 	"github.com/go-redis/redis/v8"
 )
 
+var Client *redis.Client
+
 func RedisClient() {
 	client := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
@@ -15,4 +17,5 @@ func RedisClient() {
 
 	pong, err := client.Ping(client.Context()).Result()
 	fmt.Println(pong, err)
+	Client = client
 }

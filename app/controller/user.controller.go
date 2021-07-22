@@ -1,8 +1,11 @@
 package controller
 
 import (
+	"context"
+	"encoding/json"
 	"golang-fiber-gorm/app/model"
 	"golang-fiber-gorm/app/types"
+	"golang-fiber-gorm/config"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -20,7 +23,10 @@ func CreateUser(c *fiber.Ctx) error {
 		Username: user.Username,
 		Address:  user.Address,
 		Email:    user.Email,
+		Work_id:  user.Works_id,
 	})
+
+	config.Client.Del(context.Background(), "GetUser")
 	return c.JSON(user)
 }
 
@@ -36,6 +42,8 @@ func UpdateEmailUser(c *fiber.Ctx) error {
 		"email": user.Email,
 	})
 
+	config.Client.Del(context.Background(), "GetUser")
+
 	return c.JSON(user)
 }
 
@@ -43,16 +51,27 @@ func GetUser(c *fiber.Ctx) error {
 	var user []types.UserListDB
 	model.GetUserList(&user)
 
-	return c.JSON(types.UserListResp{
-		Status: true,
-		Data:   user,
-	})
+	dataSave, _ := json.Marshal(types.UserListResp{Status: true, Data: user})
+
+	_ = config.Client.Set(context.Background(), "GetUser", dataSave, 0).Err()
+
+	data, err := config.Client.Get(context.Background(), "GetUser").Result()
+	if err != nil {
+		return err
+	}
+
+	var out map[string]interface{}
+	_ = json.Unmarshal([]byte(data), &out)
+
+	return c.JSON(out)
 }
 
 func DeleteUserById(c *fiber.Ctx) error {
 	id := c.Params("id")
 
 	model.DeleteUser("id = " + id)
+
+	config.Client.Del(context.Background(), "GetUser")
 
 	return c.SendStatus(200)
 }
