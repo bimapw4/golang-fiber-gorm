@@ -7,10 +7,10 @@ import (
 )
 
 func WorksRoutes(app fiber.Router) {
-	r := app.Group("/user")
+	r := app.Group("/works")
 
-	r.Get("/", controller.GetUser)
-	r.Post("/", controller.CreateUser)
-	r.Put("/:id", controller.UpdateEmailUser)
-	r.Delete("/:id", controller.DeleteUserById)
+	r.Get("/", controller.GetWorks)
+	r.Post("/", controller.CreateWorks)
+	r.Put("/:id", controller.UpdateWorks)
+	r.Delete("/:id", controller.DeleteWorksById)
 }
